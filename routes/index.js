@@ -13,6 +13,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.post('/sign-in', function(req, res, next) {
+  res.render('homepage');
+});
 
 
 /* GET home page. */
@@ -20,12 +23,24 @@ router.get('/home', async function(req, res, next) {
 
  var journey = await journeyModel.find()
 
- var existe = req.body.departure
+ // trouve un élément qui a comme departure, le nom de la ville du formulaire :
+ var alreadyExist = await journeyModel.findOne({
+  departure: req.body.departure
+});
+
+
+console.log('#####'+journey)
+if (alreadyExist == null) {
+  
+}
+
+
 
  
-
   res.render('homepage');
 });
+
+
 
 /* GET home page. */
 router.post('/resa', function(req, res, next) {
