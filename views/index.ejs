@@ -12,6 +12,8 @@
 
     <!-- navbar -->
 
+    <%- include('header'); %>
+
     <div class="container">
 
     <div class="row">
@@ -23,11 +25,11 @@
             <form action="/sign-in" method="POST">
                 <div class="form-group">
                     <label for="exampleInputEmail1"></label>
-                    <input name="emailFromFront" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1"></label>
-                    <input name="passwordFromFront" type="password" class="form-control" placeholder="Password">
+                    <input name="password" type="password" class="form-control" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-danger">Confirm</button>
 
@@ -41,19 +43,19 @@
             <form action="/sign-up" method="POST">
                 <div class="form-group">
                     <label for="exampleInputUsername"></label>
-                    <input name="usernameFromFront" type="text" class="form-control" placeholder="Name">
+                    <input name="name" type="text" class="form-control" placeholder="Name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputUsername"></label>
-                    <input name="usernameFromFront" type="text" class="form-control" placeholder="Firstname">
+                    <input name="firstname" type="text" class="form-control" placeholder="Firstname">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1"></label>
-                    <input name="emailFromFront" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                    <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1"></label>
-                    <input name="passwordFromFront" type="password" class="form-control"  placeholder="Password">
+                    <input name="password" type="password" class="form-control"  placeholder="Password">
                 </div>
 
                 <button type="submit" class="btn btn-danger">Confirm</button>

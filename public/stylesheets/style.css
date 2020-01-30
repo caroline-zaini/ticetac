@@ -31,23 +31,7 @@ margin-bottom: 50px;
   margin-right: 200px;
 }
 
-.homeimage {
+.row {
   margin-top: 100px;
-  max-width: 100%;
-	height: auto;
-}
-
-/******** Resa page*/
-
-.resarange {
-  margin-top: 100px;
-  margin-left: 200px;
-  margin-right: 200px;
- 
-}
-
-.range {
-
-  margin-bottom: 5px;
 }
 
