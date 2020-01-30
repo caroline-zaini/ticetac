@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var journeyModel = require('../models/journey')
+var journeyModel = require('../models/journey');
+var userModel = require('../models/users');
 
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
@@ -11,36 +12,52 @@ var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 /* GET login. */
 router.get('/', function(req, res, next) {
  
-  res.render('index', { title: 'Express' });
+  res.render('index', {  });
 });
 
-router.post('/sign-in', function(req, res, next) {
-<<<<<<< HEAD
-  res.render('homepage');
-});
-=======
-        res.redirect('/homepage');
+router.post('/sign-in', async function(req, res, next) {
+
+    var utilisateur = await userModel.findOne({
+        email: req.body.email,
+        password: req.body.password
+    });
+    console.log(utilisateur)
+    if (utilisateur == null) {
+        res.redirect('/');
+    } else {
+        res.redirect('/home');
     }
-);
-
-router.get('/homepage', function(req, res, next){
-
-    res.render('homepage', {});
 });
 
-router.post('/sign-up', function(req, res, next) {
-    res.redirect('/homepage');
+
+router.post('/sign-up', async function(req, res, next) {
+
+    var newUser = new userModel({
+        name: req.body.name,
+        firstname: req.body.firstname,
+        email: req.body.email,
+        password: req.body.password
+    });
+    await newUser.save();
+
+    // console.log(newUser)
+
+    var user = await userModel.findOne({
+        email: req.body.email
+      });
+
+    // console.log(user.email)
+
+    res.redirect('/home');
 }
 );
 
-router.get('/homepage', function(req, res, next){
-
-res.render('homepage', {});
-});
       
+router.get('/confirm', function(req, res, next) {
  
+    res.render('confirm', { });
+  }); 
    
->>>>>>> a94afcb5e83a18825eaeb4ec29ac3efa50a9626e
 
 
 /* GET home page. */
@@ -54,7 +71,7 @@ router.get('/home', async function(req, res, next) {
 });
 
 
-console.log('#####'+journey)
+
 if (alreadyExist == null) {
   
 }
@@ -129,7 +146,7 @@ router.get('/result', function(req, res, next) {
   
       function (err, journey) {
 
-          console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
+        //   console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
       }
     )
 
