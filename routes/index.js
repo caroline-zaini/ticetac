@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 
 /* GET home page. */
-router.post('/home', function(req, res, next) {
+router.get('/home', function(req, res, next) {
 
  
  
@@ -24,7 +24,14 @@ router.post('/home', function(req, res, next) {
   res.render('homepage');
 });
 
+/* GET home page. */
+router.post('/resa', function(req, res, next) {
 
+ 
+ 
+
+  res.render('resa');
+});
 
 
 

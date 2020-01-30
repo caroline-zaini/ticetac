@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
+    <!-- -->
     <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
@@ -29,7 +30,7 @@
             <h3>One way ticket : </h3>
             </div>
 
-            <form action="" method="POST">
+            <form action="/resa" method="POST">
             <div class="form-row">
 
             <div class="col">
@@ -39,11 +40,21 @@
                 <input type="text" class="form-control" placeholder="To">
             </div>
             <div class="col">
-                <input type="text" class="form-control" placeholder="Last name">
+                <!-- <input type="text" class="form-control" placeholder="Last name"> -->
+                <select id="inputState" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                  </select>
+                
             </div>
 
-            <a type="submit" class="btn btn-danger btn-lg active" role="button" aria-pressed="true">Go</a>
+            <button class="btn btn-danger" type="submit" id="button-addon2">Go</button>
             </div>
+
+            <div class="homeimage">
+                <img src="/images/landmark.png" alt="">
+            </div>
+
         </form>
 
     </div> <!-- homeform -->

@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: white;
+
   background: rgb(30,87,153);
   background: -moz-linear-gradient(top,  rgb(30,87,153) 0%, rgb(32,124,202) 20%, rgb(41,137,216) 50%, rgb(125,185,232) 100%);
   background: -webkit-linear-gradient(top,  rgb(30,87,153) 0%,rgb(32,124,202) 20%,rgb(41,137,216) 50%,rgb(125,185,232) 100%);
@@ -15,6 +15,10 @@ a {
   color: #00B7FF;
 }
 
+h3 {
+  color: white;
+}
+
 /******** Home page */
 
 .hometitle{
@@ -25,5 +29,25 @@ margin-bottom: 50px;
   margin-top: 100px;
   margin-left: 200px;
   margin-right: 200px;
+}
+
+.homeimage {
+  margin-top: 100px;
+  max-width: 100%;
+	height: auto;
+}
+
+/******** Resa page*/
+
+.resarange {
+  margin-top: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+ 
+}
+
+.range {
+
+  margin-bottom: 5px;
 }
 
