@@ -24,37 +24,31 @@
     <%- include('header') %>
     <div class="container-fluid">
 
+    <%for(var i=0; i<selectJourney.length; i++) {%>
+    <div class="rangetitle text-center">
+        <h3>Tickets available on :<%=selectJourney[i].date%> </h3>
+    </div>
+    
     <div class="resarange"> 
 
 
     <div class="range">     
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Paris / Lille</h5>
-            <p class="card-text">Train departure at : 15:00 pm</p>
-            <h5 class="card-title">93 €</h5>
+            
+            <h5 class="card-title"><%=selectJourney[i].departure%> / <%=selectJourney[i].arrival%></h5>
+         
+            <p class="card-text">Train departure at : <%=selectJourney[i].date%></p>
+            <h5 class="card-title"><%=selectJourney[i].price%> €</h5>
             <a href="#" class="btn btn-danger">OK</a>
         </div>
     </div> <!-- card -->
     </div> <!-- range -->
-
-         
-    <div class="range">     
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Paris / Lille</h5>
-                <p class="card-text">Train departure at : 15:00 pm</p>
-                <h5 class="card-title">93 €</h5>
-                <a href="#" class="btn btn-danger">OK</a>
-            </div>
-        </div> <!-- card -->
-        </div> <!-- range -->
-
-
-
+ 
+  
 
     </div> <!-- resarange -->
-
+    <%}%>
    
         
 
