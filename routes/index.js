@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var journeys = require('../models/journey')
+var journeyModel = require('../models/journey')
 
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
@@ -16,9 +16,12 @@ router.get('/', function(req, res, next) {
 
 
 /* GET home page. */
-router.get('/home', function(req, res, next) {
+router.get('/home', async function(req, res, next) {
 
- 
+ var journey = await journeyModel.find()
+
+ var existe = req.body.departure
+
  
 
   res.render('homepage');
@@ -33,12 +36,20 @@ router.post('/resa', function(req, res, next) {
   res.render('resa');
 });
 
+/* GET error page. */
+router.get('/error', function(req, res, next) {
+
+ 
+ 
+
+  res.render('error');
+});
 
 
 // Remplissage de la base de donnée, une fois suffit
 // router.get('/save', async function(req, res, next) {
 
-//   // How many journeys we want
+//   // How many journeyModel we want
 //   var count = 300
 
 //   // Save  ---------------------------------------------------
