@@ -1,7 +1,7 @@
 body {
   /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: white;
+
   background: rgb(30,87,153);
   background: -moz-linear-gradient(top,  rgb(30,87,153) 0%, rgb(32,124,202) 20%, rgb(41,137,216) 50%, rgb(125,185,232) 100%);
   background: -webkit-linear-gradient(top,  rgb(30,87,153) 0%,rgb(32,124,202) 20%,rgb(41,137,216) 50%,rgb(125,185,232) 100%);
@@ -13,6 +13,10 @@ body {
 
 a {
   color: #00B7FF;
+}
+
+h3 {
+  color: white;
 }
 
 /******** Home page */
