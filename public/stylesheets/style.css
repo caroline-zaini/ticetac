@@ -1,5 +1,5 @@
 body {
-  /* padding: 50px; */
+  /* padding: 50px;  */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
   background: rgb(30,87,153);
@@ -19,7 +19,7 @@ h3 {
   color: white;
 }
 
-/******** Home page */
+/** Home page */
 
 .hometitle{
 margin-bottom: 50px;
@@ -31,7 +31,26 @@ margin-bottom: 50px;
   margin-right: 200px;
 }
 
+.homeimage {
+  margin-top: 100px;
+  max-width: 100%;
+    height: auto;
+}
+
+/** Resa page*/
+
+.resarange {
+  margin-top: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+ 
+}
+
+.range {
+
+  margin-bottom: 5px;
+}
+
 .row {
   margin-top: 100px;
 }
-
