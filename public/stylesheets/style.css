@@ -19,6 +19,16 @@ h3 {
   color: white;
 }
 
+/***** login page */
+
+.titleForm{
+  color: white;
+}
+
+.login-box {
+  margin-bottom: 50px;
+}
+
 /** Home page */
 
 .hometitle{
@@ -27,33 +37,37 @@ margin-bottom: 50px;
 
 .homeform {
   margin-top: 100px;
-  margin-left: 200px;
-  margin-right: 200px;
+  /* margin-left: 200px;
+  margin-right: 200px; */
 }
 
 .homeimage {
   margin-top: 100px;
   max-width: 100%;
-    height: auto;
+  background-size: 20px;
 }
 
 /** Resa page*/
 
 .resarange {
   margin-top: 100px;
-  margin-left: 200px;
-  margin-right: 200px;
+  /* margin-left: 200px;
+  margin-right: 200px; */
  
 }
 
-.range {
+.resa-title {
+  margin-bottom: 20px;
+}
 
-  margin-bottom: 2px;
+.range {
+  margin-top: 20px;
 }
 
 .row {
   margin-top: 100px;
 }
+
 
 .table-borderless {
   margin-top: 20px;
@@ -66,4 +80,17 @@ margin-bottom: 50px;
 .rangetitle {
   margin-top: 100px;
 
+}
+.list-group {
+  margin-bottom: 5px;
+}
+
+
+/***** header */
+.historic {
+  color: #535c68;
+}
+
+.connexion {
+  color: #e74c3c;
 }

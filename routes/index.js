@@ -123,7 +123,7 @@ router.post('/resa', async function(req, res, next) {
   date: req.body.date
 });
 
-console.log('#####'+selectJourney)
+console.log('#####'+req.body.date)
 
  // Si tu trouves le depart dans la BDD:
   if (selectJourney != null) {
@@ -137,11 +137,14 @@ console.log('#####'+selectJourney)
 /* GET error page. */
 router.get('/notrain', function(req, res, next) {
 
- 
- 
-
   res.render('notrain');
 });
+
+router.get('/historic', function(req, res, next) {
+
+  res.render('historic');
+});
+
 
 
 // Remplissage de la base de donnée, une fois suffit

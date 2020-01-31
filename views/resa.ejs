@@ -24,26 +24,34 @@
     <%- include('header') %>
     <div class="container-fluid">
 
+    <div class="resarange col-12 offset-lg-1 col-lg-10 offset-lg-1">
+    <%for(var i=0; i<selectJourney.length; i++) {
+        var date = dateFormat(selectJourney[i].date)
+    %>
+    <%}%>
+    <div class="resa-title">
+    <h3 class="offset-lg-3">Tickets available on : <%=date%> </h3>
+    </div>
     
-    <h3 class="rangetitle text-center">Tickets available on : 3 </h3>
     <%for(var i=0; i<selectJourney.length; i++) {%>
-    
-    <div class="resarange">
-    
-    <div class="card range">
-        
-        <div class="card-body">       
-            <h5 class="card-title"><%=selectJourney[i].departure%> / <%=selectJourney[i].arrival%></h5>    
-            <p class="card-text">Train departure at : <%=selectJourney[i].date%></p>
-            <h5 class="card-title"><%=selectJourney[i].price%> €</h5>
+    <ul class="list-group" >  
+    <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">       
+            <h5><%=selectJourney[i].departure%> / <%=selectJourney[i].arrival%></h5>    
+            <span>Train departure at : <%=selectJourney[i].departureTime%></span>
+            <span><%=selectJourney[i].price%> €</span>
             <a href="/confirm?id=<%=selectJourney[i]._id%>" class="btn btn-danger">OK</a>
         </div> <!-- card-body -->
         
-    </div> <!-- card-range -->
+    </li> <!-- card-range -->
    
- 
+    
+    </ul>
+    <%}%>
   </div> <!-- resarange -->
-  <%}%>
+
+  
+ 
    
         
 
