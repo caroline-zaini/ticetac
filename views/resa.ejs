@@ -25,13 +25,25 @@
     <div class="container-fluid">
 
     <div class="resarange col-12 offset-lg-1 col-lg-10 offset-lg-1">
-    <%for(var i=0; i<selectJourney.length; i++) {
-        var date = dateFormat(selectJourney[i].date)
-    %>
-    <%}%>
+
+    <%if(selectJourney.length != 0) {
+
+        for(var i=0; i<selectJourney.length; i++) {
+        var date = dateFormat(selectJourney[i].date)%>
+      
+        <%}
+
+        } else {%>
+            <div class="resa-title"></div>
+            <h3 class="offset-lg-3">No dates found</h3>
+             </div>
+        <%}%>
+
+
     <div class="resa-title">
     <h3 class="offset-lg-3">Tickets available on : <%=date%> </h3>
     </div>
+   
     
     <%for(var i=0; i<selectJourney.length; i++) {%>
     <ul class="list-group" >  
