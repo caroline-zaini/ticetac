@@ -3,13 +3,13 @@ var router = express.Router();
 
 var journeyModel = require('../models/journey');
 var userModel = require('../models/users');
-
+var commandeModel = require('../models/commade')
 
 
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
-
+var order = []
 
 /* GET login. */
 router.get('/', function(req, res, next) {
@@ -27,6 +27,12 @@ router.post('/sign-in', async function(req, res, next) {
     if (utilisateur == null) {
         res.redirect('/');
     } else {
+
+      req.session.user = {
+        email: utilisateur.email,
+        id: utilisateur._id
+      }
+      console.log(req.session.user)
         res.redirect('/home');
     }
 });
@@ -47,28 +53,50 @@ router.post('/sign-up', async function(req, res, next) {
     });
     await newUser.save();
 
-    // console.log(newUser)
+    req.session.user = {
+      email: utilisateur.email,
+      id: utilisateur._id
+    }
 
     res.redirect('/home');
   } else {
 
+    
     res.redirect('/');
 
   }
-    
-
-    
+     
 } 
 );
 
       
 router.get('/confirm', async function(req, res, next) {
 
-  var journey = await journeyModel.findById(req.query.id);
-  // console.log(journey)
-    
+  var travel = await journeyModel.findById(req.query.id)
  
-    res.render('confirm', { journey });
+  // var booking = await new commandeModel({
+  //   departure: travel.departure,
+  //   arrival: travel.arrival,
+  //   date: travel.date,
+  //   departureTime: travel.departureTime,
+  //   price: travel.price
+  // });
+
+  // await booking.save();
+
+  // var commande = await commandeModel.find()
+  // console.log(commande)
+
+  var commande = order.push({
+    departure: travel.departure,
+    arrival: travel.arrival,
+    date: travel.date,
+    departureTime: travel.departureTime,
+    price: travel.price
+  })
+    console.log(commande)
+ 
+    res.render('confirm', { commande });
   }); 
    
 
