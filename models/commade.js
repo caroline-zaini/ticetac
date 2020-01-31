@@ -1,6 +1,7 @@
 var mongoose = require('./bdd')
 
 var commandeSchema = mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     departure: String,
     arrival: String,
     date: Date,

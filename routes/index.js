@@ -69,18 +69,21 @@ router.post('/confirm', async function(req, res, next) {
 
   var travel = await journeyModel.findById(req.body.id)
  
-    var commande = [];
-  commande.push({
+  if(req.session.commande == undefined) {
+    req.session.commande = [];
+  } 
+  
+  req.session.commande.push({
     departure: travel.departure,
     arrival: travel.arrival,
     date: travel.date,
     departureTime: travel.departureTime,
     price: travel.price
   })
- 
-  req.session.commande = commande
 
-    res.render('confirm', { commande });
+  
+
+    res.render('confirm', { commande: req.session.commande });
   }); 
    
 
@@ -88,8 +91,8 @@ router.post('/confirm', async function(req, res, next) {
 /* GET home page. */
 router.get('/home', async function(req, res, next) {
 
-  var journey = await journeyModel.find()
-
+  //var journey = await journeyModel.find()
+console.log(req.session)
   res.render('homepage', {});
 });
 
@@ -129,7 +132,10 @@ router.get('/notrain', function(req, res, next) {
 
 router.get('/historic', async function(req, res, next) {
 
-  var lastTrip = await commandeModel.find();
+  var lastTrip = await commandeModel.findOne({id:req.session.user.id})
+                                    .populate('users')
+                                    .exec()
+  console.log('LASTRIP========',lastTrip)
 
   res.render('historic', {lastTrip});
 });
