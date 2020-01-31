@@ -8,7 +8,7 @@ var userModel = require('../models/users');
 
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
-var selectJourney = [];
+
 
 
 /* GET login. */
@@ -88,32 +88,22 @@ router.get('/home', async function(req, res, next) {
 /* GET home page. */
 router.post('/resa', async function(req, res, next) {
 
-
  // trouve un élément dont le departure a comme valeur le nom de la ville du formulaire :
- var alreadyExist = await journeyModel.find({
+ var selectJourney = await journeyModel.find({
   departure: req.body.departure,
   arrival: req.body.arrival,
   date: req.body.date
 });
 
-
-console.log('#####'+alreadyExist)
-
+console.log('#####'+selectJourney)
 
  // Si tu trouves le depart dans la BDD:
-if (alreadyExist != null) {
-  selectJourney.push({
-    departure: req.body.departure,
-    arrival: req.body.arrival,
-    date: req.body.date,
-    price: alreadyExist.price
-  })
-  res.render('resa', {selectJourney});
-} else {
-  res.render('notrain');
-}
+  if (selectJourney != null) {
+    res.render('resa', {selectJourney});
+  } else {
+    res.render('notrain');
+  }
 
- 
 });
 
 /* GET error page. */
