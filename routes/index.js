@@ -109,11 +109,14 @@ console.log('#####'+req.body.date)
 /* GET error page. */
 router.get('/notrain', function(req, res, next) {
 
- 
- 
-
   res.render('notrain');
 });
+
+router.get('/historic', function(req, res, next) {
+
+  res.render('historic');
+});
+
 
 
 // Remplissage de la base de donnée, une fois suffit

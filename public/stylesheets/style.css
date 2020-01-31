@@ -19,6 +19,16 @@ h3 {
   color: white;
 }
 
+/***** login page */
+
+.titleForm{
+  color: white;
+}
+
+.login-box {
+  margin-bottom: 50px;
+}
+
 /** Home page */
 
 .hometitle{
@@ -34,7 +44,7 @@ margin-bottom: 50px;
 .homeimage {
   margin-top: 100px;
   max-width: 100%;
-    height: auto;
+  background-size: 20px;
 }
 
 /** Resa page*/
@@ -46,6 +56,10 @@ margin-bottom: 50px;
  
 }
 
+.resa-title {
+  margin-bottom: 20px;
+}
+
 .range {
   margin-top: 20px;
 }
@@ -53,6 +67,7 @@ margin-bottom: 50px;
 .row {
   margin-top: 100px;
 }
+
 
 .table-borderless {
   margin-top: 20px;
@@ -68,4 +83,14 @@ margin-bottom: 50px;
 }
 .list-group {
   margin-bottom: 5px;
+}
+
+
+/***** header */
+.historic {
+  color: #535c68;
+}
+
+.connexion {
+  color: #e74c3c;
 }
