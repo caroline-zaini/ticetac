@@ -29,21 +29,23 @@
 			  </tr>
 			</thead>
 			<tbody>
-			
+			<% var total = 0
+			 for(i=0; i<lastTrip.length; i++) {%>
 			  <tr class="table-light">
 				<th scope="row"><%=i+1%></th>
-				<td>départ/arrivée</td>
-				<td>date</td>
-				<td>departure time pm</td>
-				<td>price €</td>
+				<td><%=lastTrip[i].departure%>/<%=lastTrip[i].arrival%></td>
+				<td><%=dateFormat(lastTrip[i].date)%></td>
+				<td><%=lastTrip[i].departureTime%> pm</td>
+				<td><%=lastTrip[i].price%> €</td>
 			  </tr>
-		
+			  <%total += lastTrip[i].price%>
+			  <%}%>
 			  <tr class="table-danger">
 				<th scope="row">Total</th>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td>total €</td>
+				<td><%=total%> €</td>
 			  </tr>
 			</tbody>
 		  </table>

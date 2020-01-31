@@ -40,7 +40,11 @@
             <h5><%=selectJourney[i].departure%> / <%=selectJourney[i].arrival%></h5>    
             <span>Train departure at : <%=selectJourney[i].departureTime%></span>
             <span><%=selectJourney[i].price%> €</span>
-            <a href="/confirm?id=<%=selectJourney[i]._id%>" class="btn btn-danger">OK</a>
+            <form action="/confirm" method="POST">
+                <input type="hidden" name="id" value="<%=selectJourney[i]._id%>">
+            
+                <button class="btn btn-danger">OK</button>
+            </form>
         </div> <!-- card-body -->
         
     </li> <!-- card-range -->

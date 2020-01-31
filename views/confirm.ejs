@@ -54,7 +54,7 @@
 
 		  <!-- Button trigger modal -->
 		  <div class="d-flex justify-content-end">
-			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+		 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
 			confirm
 			</button>
 		</div>
@@ -87,17 +87,17 @@
 			</thead>
 			<tbody>
 			<% var total = 0	
-			   for (i=0; i<journey.length; i++) { 
-				console.log(journey[i].price)   
+			   for (i=0; i<commande.length; i++) { 
+				   
 				%>
 			  <tr class="table-light">
 				<th scope="row"><%=i+1%></th>
-				<td><%=journey[i].departure%>/<%=journey[i].arrival%></td>
-				<td><%=journey[i].date%></td>
-				<td><%=journey[i].departureTime%> pm</td>
-				<td><%=journey[i].price%> €</td>
+				<td><%=commande[i].departure%>/<%=commande[i].arrival%></td>
+				<td><%=dateFormat(commande[i].date)%></td>
+				<td><%=commande[i].departureTime%> pm</td>
+				<td><%=commande[i].price%> €</td>
 			  </tr>
-			  <%total += journey[i].price%>
+			  <%total += commande[i].price%>
 			  <%}%>
 			  <tr class="table-danger">
 				<th scope="row">Total</th>
@@ -113,7 +113,7 @@
 	  </div>
 	  
       <div class="modal-footer">
-        <a href="/home" class="btn btn-danger">OK</a>
+        <a href="/payment" class="btn btn-danger">OK</a>
       </div>
     </div>
   </div>

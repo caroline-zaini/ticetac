@@ -9,7 +9,6 @@ var commandeModel = require('../models/commade')
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
-var order = []
 
 /* GET login. */
 router.get('/', function(req, res, next) {
@@ -70,32 +69,28 @@ router.post('/sign-up', async function(req, res, next) {
 );
 
       
-router.get('/confirm', async function(req, res, next) {
+router.post('/confirm', async function(req, res, next) {
 
-  var travel = await journeyModel.findById(req.query.id)
- 
-  // var booking = await new commandeModel({
-  //   departure: travel.departure,
-  //   arrival: travel.arrival,
-  //   date: travel.date,
-  //   departureTime: travel.departureTime,
-  //   price: travel.price
-  // });
-
-  // await booking.save();
+  var travel = await journeyModel.findById(req.body.id)
+ console.log(travel)
+  
 
   // var commande = await commandeModel.find()
   // console.log(commande)
 
-  var commande = order.push({
+    
+    var commande = [];
+  commande.push({
     departure: travel.departure,
     arrival: travel.arrival,
     date: travel.date,
     departureTime: travel.departureTime,
     price: travel.price
   })
-    console.log(commande)
  
+  req.session.commande = commande
+
+  // console.log("$$$$$$$$$$",req.session.commande)
     res.render('confirm', { commande });
   }); 
    
@@ -140,12 +135,30 @@ router.get('/notrain', function(req, res, next) {
   res.render('notrain');
 });
 
-router.get('/historic', function(req, res, next) {
+router.get('/historic', async function(req, res, next) {
 
-  res.render('historic');
+  var lastTrip = await commandeModel.find();
+
+  res.render('historic', {lastTrip});
 });
 
 
+router.get('/payment', async function(req, res, next) {
+
+  // console.log(req.session.commande)
+  for(i=0; i<req.session.commande.length; i++)
+  var booking = await new commandeModel({
+    departure: req.session.commande[i].departure,
+    arrival: req.session.commande[i].arrival,
+    date: req.session.commande[i].date,
+    departureTime: req.session.commande[i].departureTime,
+    price: req.session.commande[i].price
+  });
+
+   await booking.save();
+
+  res.redirect('/home');
+});
 
 // Remplissage de la base de donnée, une fois suffit
 // router.get('/save', async function(req, res, next) {
