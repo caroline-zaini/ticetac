@@ -6,10 +6,6 @@ var userModel = require('../models/users');
 var commandeModel = require('../models/commade')
 
 
-var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
-var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
-
-
 /* GET login. */
 router.get('/', function(req, res, next) {
  
@@ -22,7 +18,7 @@ router.post('/sign-in', async function(req, res, next) {
         email: req.body.email,
         password: req.body.password
     });
-    console.log(utilisateur)
+    
     if (utilisateur == null) {
         res.redirect('/');
     } else {
@@ -31,7 +27,7 @@ router.post('/sign-in', async function(req, res, next) {
         email: utilisateur.email,
         id: utilisateur._id
       }
-      console.log(req.session.user)
+
         res.redirect('/home');
     }
 });
@@ -72,13 +68,7 @@ router.post('/sign-up', async function(req, res, next) {
 router.post('/confirm', async function(req, res, next) {
 
   var travel = await journeyModel.findById(req.body.id)
- console.log(travel)
-  
-
-  // var commande = await commandeModel.find()
-  // console.log(commande)
-
-    
+ 
     var commande = [];
   commande.push({
     departure: travel.departure,
@@ -90,7 +80,6 @@ router.post('/confirm', async function(req, res, next) {
  
   req.session.commande = commande
 
-  // console.log("$$$$$$$$$$",req.session.commande)
     res.render('confirm', { commande });
   }); 
    
@@ -111,14 +100,17 @@ router.get('/home', async function(req, res, next) {
 /* GET home page. */
 router.post('/resa', async function(req, res, next) {
 
+  var departure = req.body.departure[0].toUpperCase()+req.body.departure.slice(1);
+  var arrival = req.body.arrival[0].toUpperCase()+req.body.arrival.slice(1)
+  console.log(departure)
+  console.log(arrival)
  // trouve un élément dont le departure a comme valeur le nom de la ville du formulaire :
  var selectJourney = await journeyModel.find({
-  departure: req.body.departure,
-  arrival: req.body.arrival,
+  departure: departure,
+  arrival: arrival,
   date: req.body.date
 });
 
-console.log('#####'+req.body.date)
 
  // Si tu trouves le depart dans la BDD:
   if (selectJourney != null) {
@@ -145,7 +137,7 @@ router.get('/historic', async function(req, res, next) {
 
 router.get('/payment', async function(req, res, next) {
 
-  // console.log(req.session.commande)
+
   for(i=0; i<req.session.commande.length; i++)
   var booking = await new commandeModel({
     departure: req.session.commande[i].departure,
@@ -160,39 +152,6 @@ router.get('/payment', async function(req, res, next) {
   res.redirect('/home');
 });
 
-// Remplissage de la base de donnée, une fois suffit
-// router.get('/save', async function(req, res, next) {
-
-//   // How many journeyModel we want
-//   var count = 300
-
-//   // Save  ---------------------------------------------------
-//     for(var i = 0; i< count; i++){
-
-//     departureCity = city[Math.floor(Math.random() * Math.floor(city.length))]
-//     arrivalCity = city[Math.floor(Math.random() * Math.floor(city.length))]
-
-//     if(departureCity != arrivalCity){
-
-//       var newUser = new journeyModel ({
-//         departure: departureCity , 
-//         arrival: arrivalCity, 
-//         date: date[Math.floor(Math.random() * Math.floor(date.length))],
-//         departureTime:Math.floor(Math.random() * Math.floor(23)) + ":00",
-//         price: Math.floor(Math.random() * Math.floor(125)) + 25,
-//       });
-       
-//        await newUser.save();
-
-//     }
-
-//   }
-//   res.render('index', { title: 'Express' });
-// });
-
-
-// Cette route est juste une verification du Save.
-// Vous pouvez choisir de la garder ou la supprimer.
 router.get('/result', function(req, res, next) {
 
   // Permet de savoir combien de trajets il y a par ville en base
@@ -203,7 +162,7 @@ router.get('/result', function(req, res, next) {
   
       function (err, journey) {
 
-        //   console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
+       
       }
     )
 
