@@ -29,26 +29,25 @@
 			  </tr>
 			</thead>
 			<tbody>
+			<% var total = 0	
+			   for (i=0; i<journey.length; i++) { 
+				console.log(journey[i].price)   
+				%>
 			  <tr class="table-light">
-				<th scope="row">1</th>
-				<td>Paris/Lille</td>
-				<td>02/08/2019</td>
-				<td>15:00 pm</td>
-				<td>93 €</td>
+				<th scope="row"><%=i+1%></th>
+				<td><%=journey[i].departure%>/<%=journey[i].arrival%></td>
+				<td><%=journey[i].date%></td>
+				<td><%=journey[i].departureTime%> pm</td>
+				<td><%=journey[i].price%> €</td>
 			  </tr>
-			  <tr class="table-light">
-				<th scope="row">2</th>
-				<td>Paris/Bordeaux</td>
-				<td>07/12/2019</td>
-				<td>19:00 pm</td>
-				<td>125 €</td>
-			  </tr>
+			  <%total += journey[i].price%>
+			  <%}%>
 			  <tr class="table-danger">
 				<th scope="row">Total</th>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td>218 €</td>
+				<td><%= total %> €</td>
 			  </tr>
 			</tbody>
 		  </table>

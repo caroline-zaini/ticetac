@@ -34,7 +34,12 @@ router.post('/sign-in', async function(req, res, next) {
 
 router.post('/sign-up', async function(req, res, next) {
 
-    var newUser = new userModel({
+  var user = await userModel.findOne({
+    email: req.body.email
+  }); 
+  
+  if(!user && req.body.email != '') {
+  var newUser = new userModel({
         name: req.body.name,
         firstname: req.body.firstname,
         email: req.body.email,
@@ -44,20 +49,26 @@ router.post('/sign-up', async function(req, res, next) {
 
     // console.log(newUser)
 
-    var user = await userModel.findOne({
-        email: req.body.email
-      });
-
-    // console.log(user.email)
-
     res.redirect('/home');
-}
+  } else {
+
+    res.redirect('/');
+
+  }
+    
+
+    
+} 
 );
 
       
-router.get('/confirm', function(req, res, next) {
+router.get('/confirm', async function(req, res, next) {
+
+  var journey = await journeyModel.findById(req.query.id);
+  // console.log(journey)
+    
  
-    res.render('confirm', { });
+    res.render('confirm', { journey });
   }); 
    
 
