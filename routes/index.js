@@ -118,7 +118,7 @@ router.post('/resa', async function(req, res, next) {
   date: req.body.date
 });
 
-console.log('#####'+req.body.date)
+console.log('#####',selectJourney)
 
  // Si tu trouves le depart dans la BDD:
   if (selectJourney != null) {
